@@ -4,7 +4,8 @@
   "description": "Search music by mood.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js"
+    "start": "webpack --config webpack.config.js",
+    "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open \""
   },
   "keywords": [],
   "author": "",
