@@ -26,12 +26,12 @@ module.exports = {
       directory: path.resolve(__dirname),
       publicPath: "/",
     },
-    // proxy: [
-    //   {
-    //     context: ["/"],
-    //     target: "http://localhost:3000",
-    //   },
-    // ],
+    proxy: [
+      {
+        context: ["/"],
+        target: "http://localhost:3000",
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
