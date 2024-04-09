@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const dbController = require('./dbController');
 
 const app = express();
 const PORT = 3000;
@@ -10,6 +11,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.resolve(__dirname, 'INSERT FILE PATH')));
 
 // ROUTES
+app.post('/genre', dbController.getGenre, (req, res) =>
+  res.status(200).send(res.locals.genre)
+);
+
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, './index.html')));
 
 // Unknown Page
