@@ -65,8 +65,9 @@ dbController.addHistory = (req, res, next) => {
     `${year}-${month}-${day}`,
     res.locals.userId,
     res.locals.moodId,
+    req.body.message
   ];
-  const text = `INSERT INTO history(date, user_id, mood_id) VALUES($1, $2, $3)`;
+  const text = `INSERT INTO history(date, user_id, mood_id, message) VALUES($1, $2, $3, $4)`;
   db.query(text, params)
     .then(() => next())
     .catch((err) =>
@@ -76,7 +77,7 @@ dbController.addHistory = (req, res, next) => {
 
 dbController.getUserHistory = (req, res, next) => {
   const params = [req.body.name];
-  const text = `SELECT h.date, m.name as mood FROM users u 
+  const text = `SELECT h.date, m.name as mood, h.message FROM users u 
   INNER JOIN history h ON u._id = h.user_id 
   INNER JOIN mood m ON m._id = h.mood_id
   WHERE u.name = $1`;
