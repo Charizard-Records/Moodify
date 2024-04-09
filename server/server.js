@@ -16,7 +16,7 @@ app.post('/genre', dbController.getGenre, (req, res) =>
 );
 
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
-console.log(path.join(__dirname, '../index.html'))
+// console.log(path.join(__dirname, '../index.html'))
 
 // Unknown Page
 app.use('*', (req, res) => res.status(404).send('Page not found'));
