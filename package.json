@@ -4,7 +4,7 @@
   "description": "Search music by mood.",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production nodemon server/server.js",
+    "start": "cross-env NODE_ENV=development webpack serve --open",
     "build": "cross-env NODE_ENV=production webpack -w",
     "dev": "concurrently \"cross-env NODE_ENV=development webpack serve --open \" \"nodemon server/server.js\"",
     "server": "nodemon server/server.js"
@@ -32,12 +32,14 @@
   "dependencies": {
     "concurrently": "^8.2.2",
     "dotenv-webpack": "^8.1.0",
+    "file-loader": "^6.2.0",
     "flowbite": "^2.3.0",
     "html-webpack-plugin": "^5.6.0",
     "nodemon": "^3.1.0",
     "pg": "^8.11.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.3"
   }
 }

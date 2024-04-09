@@ -1,11 +1,11 @@
 import React from "react";
-import NavBar from "./components/NavBar";
 import {Outlet} from 'react-router-dom'
+import MoodifyNav from "./components/Navbar";
 
 const App = () => {
   return (
     <div>
-      <NavBar/>
+      <MoodifyNav />
 
       <Outlet />
     </div>

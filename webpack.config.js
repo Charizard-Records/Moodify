@@ -15,7 +15,7 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({ title: "development", template: "./index.html" }),
-    new Dotenv()
+    new Dotenv(),
   ],
   devServer: {
     historyApiFallback: true,
@@ -28,13 +28,13 @@ module.exports = {
     },
     proxy: [
       {
-        context: ["/"],
+        context: ["/genre"],
         target: "http://localhost:3000",
       },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: [".js", ".jsx", ".json"],
   },
   module: {
     rules: [
@@ -74,6 +74,14 @@ module.exports = {
                 plugins: [require("tailwindcss"), require("autoprefixer")],
               },
             },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
           },
         ],
       },
