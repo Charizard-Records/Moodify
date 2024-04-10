@@ -8,7 +8,7 @@ import anger from "../assets/anger.jpg";
 import upbeat from "../assets/Energetic.jpeg";
 
 const MoodChoice = ({ onClickBtn }) => {
-  console.log(onClickBtn);
+
   return (
     <div
       className="shadow-lg rounded-md mx-4 mt-4 

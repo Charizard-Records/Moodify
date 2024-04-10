@@ -92,7 +92,7 @@ const MainPage = () => {
         <div className="col-span-2">
           <MoodChoice onClickBtn={toggle}/>
         </div>
-        <div className="col-span-1">
+        <div className="col-span-1 mx-auto w-full">
           <MusicList />
         </div>
       </div>

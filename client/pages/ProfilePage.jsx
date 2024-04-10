@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import ProfileInfo from '../components/ProfileInfo'
 import History from '../components/History'
 import AnalysisBoard from '../components/AnalysisBoard'
@@ -8,7 +8,7 @@ import AnalysisBoard from '../components/AnalysisBoard'
 const ProfilePage = () => {
 
   return (
-    <div className='bg-black h-full border border-black ' >
+    <div className='bg-black h-full border border-black' >
 
       <div className='grid grid-cols-3 '>
 
