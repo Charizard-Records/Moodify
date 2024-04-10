@@ -2,9 +2,13 @@ import React from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 
-//When ever i select a mood
-
 const Navbar = () => {
+  function signInHandleClick() {
+    console.log("button clicked");
+    fetch("http://localhost:8080/login")
+      // .then((data) => data.json())
+      .then((response) => (window.location.href = response.url));
+  }
   return (
     <>
       <nav className="px-20 bg-gradient-to-r from-black  via-gray-900 to-gray-800">
@@ -170,10 +174,12 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <button className="block py-2 px-3 rounded  md:hover:bg-transparent md:text-gray-300 md:hover:text-purple-300 md:p-0    ">
+                <button
+                  className="block py-2 px-3 rounded  md:hover:bg-transparent md:text-gray-300 md:hover:text-purple-300 md:p-0    "
+                  onClick={signInHandleClick}
+                >
                   Sign In
                 </button>
-    
               </li>
             </ul>
           </div>
