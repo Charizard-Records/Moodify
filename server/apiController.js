@@ -1,10 +1,26 @@
 const axios = require('axios');
+const querystring = require ('querystring');
+
 
 
 const accessToken = '';
 const clientId = '16a9c134560d4ae5ae1085469dcdf56b';
 const clientSecret = '05745b1fb16342b08f7ef71045e2c348';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'http://localhost:8080';
+
+function generateRandomString(length) {
+    // Define characters allowed in the random string
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      // Generate a random index within the characters string
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      
+      // Append the character at the random index to the result string
+      result += characters.charAt(randomIndex);
+    }
+    return result;
+  }
 
 const apiController = {
   
@@ -14,6 +30,7 @@ const apiController = {
 login(req, res, next){
     let state = generateRandomString(16);
     let scope = 'user-read-private user-read-email';
+    console.log("login middleware hit")
 
     res.redirect('https://accounts.spotify.com/authorize?' +
       querystring.stringify({
@@ -21,37 +38,61 @@ login(req, res, next){
         client_id: clientId,
         scope:scope,
         redirect_uri: redirectUri,
-        state:state
+        state:state,
       }));
     
     next()
   },
 
-  getToken(req, res, next){
-    let code = req.query.code || null;
-    let state = req.query.state || null;
+  
+//   getToken(req, res, next){
+//     let code = req.query.code || null;
+//     let state = req.query.state || null;
 
-    if (state = req.query.code || null) {
-        res.redirect('/#' + querystring.stringify({
-            error: 'state_mismatch'
-        }));
-    } else {
-        let getToken = {
-            url: 'https://accounts.spotify.com/api/token',
-            form: {
-                code: code,
-                redirect_uri: redirectUri,
-                grant_type: 'authorization_code'
-            },
-            headers: {
-                'content-type': 'application/x-www-form-urlencoded',
-                'Authorization': 'Basic ' + (new Buffer.from(clientId + ':' + clientSecret).toString('base64'))
-                },
-            json: true 
-          };
-    }
-    next()
-  },
+//     if (state = req.query.code || null) {
+//         res.redirect('/#' + querystring.stringify({
+//             error: 'state_mismatch'
+//         }));
+//     } else {
+//         let getToken = {
+//             url: 'https://accounts.spotify.com/api/token',
+//             form: {
+//                 code: code,
+//                 redirect_uri: redirectUri,
+//                 grant_type: 'authorization_code'
+//             },
+//             headers: {
+//                 'content-type': 'application/x-www-form-urlencoded',
+//                 'Authorization': 'Basic ' + (new Buffer.from(clientId + ':' + clientSecret).toString('base64'))
+//                 },
+//             json: true 
+//           };
+//     }
+//     next()
+//   },
+
+async getToken(req, res, next){
+    const code = res.query.code;
+    var state = req.query.state; 
+     res.locals.token = await fetch('https://accounts.spotify.com/api/token',{
+        method: "POST",
+        form: {
+            code: code,
+            redirect_uri: redirectUri,
+            grant_type: 'authorization_code'
+          },
+          header:{
+            'content-type': 'application/x-www-form-urlencoded',
+            'Authorization': 'Basic ' + (new Buffer.from(clientId + ':' + clientSecret).toString('base64'))
+          },
+          json: true
+    })
+},
+
+
+//   refreshToken(req, res, next){
+//     let refreshToken = req.query.refresh_token;
+//   },
 
 
   //middleware 
@@ -79,4 +120,4 @@ login(req, res, next){
   },
 };
 
-export default apiController;
+module.exports = apiController;
