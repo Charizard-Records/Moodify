@@ -1,12 +1,14 @@
 const express = require('express');
 const path = require('path');
 const dbController = require('./dbController');
+const cors = require('cors')
 
 const app = express();
 const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
 app.use(express.static(path.resolve(__dirname, 'INSERT FILE PATH')));
 

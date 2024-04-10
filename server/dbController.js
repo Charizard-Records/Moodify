@@ -1,4 +1,4 @@
-const db = require('./dbModel');
+const db = require("./dbModel");
 
 const dbController = {};
 
@@ -14,7 +14,7 @@ dbController.getGenre = (req, res, next) => {
       return next();
     })
     .catch((err) =>
-      next({ log: 'Error in dbController.getGenre', message: err })
+      next({ log: "Error in dbController.getGenre", message: err })
     );
 };
 
@@ -24,7 +24,7 @@ dbController.newUser = (req, res, next) => {
   db.query(text, params)
     .then(() => next())
     .catch((err) =>
-      next({ log: 'Error in dbController.newUser', message: err })
+      next({ log: "Error in dbController.newUser", message: err })
     );
 };
 
@@ -37,7 +37,7 @@ dbController.getUserId = (req, res, next) => {
       return next();
     })
     .catch((err) =>
-      next({ log: 'Error in dbController.getUserId', message: err })
+      next({ log: "Error in dbController.getUserId", message: err })
     );
 };
 
@@ -50,7 +50,7 @@ dbController.getUserInfo = (req, res, next) => {
       return next();
     })
     .catch((err) =>
-      next({ log: 'Error in dbController.getUserInfo', message: err })
+      next({ log: "Error in dbController.getUserInfo", message: err })
     );
 };
 
@@ -63,7 +63,7 @@ dbController.getMoodId = (req, res, next) => {
       return next();
     })
     .catch((err) =>
-      next({ log: 'Error in dbController.getMoodId', message: err })
+      next({ log: "Error in dbController.getMoodId", message: err })
     );
 };
 
@@ -71,9 +71,8 @@ dbController.addHistory = (req, res, next) => {
   // calculate current date in YYYY-MM-DD format
   const currentDate = new Date();
   const year = currentDate.getFullYear();
-  const month = String(currentDate.getMonth() + 1).padStart(2, '0');
-  const day = String(currentDate.getDate()).padStart(2, '0');
-
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0");
+  const day = String(currentDate.getDate()).padStart(2, "0");
 
   // const params = [
   //   `${year}-${month}-${day}`,
@@ -84,21 +83,21 @@ dbController.addHistory = (req, res, next) => {
 
   const params = [
     `${year}-${month}-${day}`,
-    req.body.userId,
-    req.body.moodId,
-    req.body.message
+    req.body.user_id,
+    req.body.mood_id,
+    req.body.message,
   ];
 
   res.locals.date = `${year}-${month}-${day}`;
-  res.locals.userId = req.body.userId;
-  res.locals.moodId = req.body.moodId
-  res.locals.message = req.body.message
+  res.locals.user_id = req.body.user_id;
+  res.locals.mood_id = req.body.mood_id;
+  res.locals.message = req.body.message;
 
   const text = `INSERT INTO history(date, user_id, mood_id, message) VALUES($1, $2, $3, $4)`;
   db.query(text, params)
     .then(() => next())
     .catch((err) =>
-      next({ log: 'Error in dbController.addHistory', message: err })
+      next({ log: "Error in dbController.addHistory", message: err })
     );
 };
 
@@ -115,7 +114,7 @@ dbController.getUserHistory = (req, res, next) => {
       return next();
     })
     .catch((err) =>
-      next({ log: 'Error in dbController.getUserHistory', message: err })
+      next({ log: "Error in dbController.getUserHistory", message: err })
     );
 };
 
@@ -131,7 +130,7 @@ dbController.getMoodsDay = (req, res, next) => {
       return next();
     })
     .catch((err) =>
-      next({ log: 'Error in dbController.getMoodsDay', message: err })
+      next({ log: "Error in dbController.getMoodsDay", message: err })
     );
 };
 
