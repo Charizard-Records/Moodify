@@ -43,7 +43,7 @@ const MoodHistory = () => {
       {userHistory.map((userHis, idx) => (
         <div
         key={idx}
-          className="p-2 mb-2 border border-gray-700 rounded-lg 
+          className="p-2 mb-2  rounded-lg 
        bg-gradient-to-r from-black  via-gray-900 to-gray-800 "
         >
           <time className="text-base font-semibold text-gray-200 ">

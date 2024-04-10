@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const ProfileInfo = () => {
   const [userInfo, setUserInfo] = useState({})
@@ -26,7 +27,9 @@ const ProfileInfo = () => {
       className="overflow-hidden shadow-lg rounded-md m-4
       bg-gradient-to-r from-pink-300  via-purple-400 to-indigo-500"
     >
+      <Link to='/'>
       <IoChevronBackCircleOutline className="text-3xl ml-2 mt-2 text-gray-200 hover:text-white" />
+      </Link>
 
       <section className="overflow-hidden flex mb-4 text-white">
         <div className="w-[30%] h-full flex items-center justify-start ml-6">

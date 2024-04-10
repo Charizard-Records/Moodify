@@ -4,7 +4,7 @@ import MoodifyNav from "./components/Navbar";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-black ">
       <MoodifyNav />
 
       <Outlet />

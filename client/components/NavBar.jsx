@@ -2,6 +2,9 @@ import React from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 
+//When ever i select a mood
+
+
 const Navbar = () => {
   return (
     <>
@@ -30,9 +33,9 @@ const Navbar = () => {
               >
                 <path
                   stroke="currentColor"
-                  // stroke-linecap="round"
-                  // stroke-linejoin="round"
-                  // stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                 />
               </svg>
@@ -40,7 +43,7 @@ const Navbar = () => {
             </button>
 
             <div className="relative hidden md:block ">
-            {/* icon search */}
+              {/* icon search */}
               <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none text-gray-500 ">
                 <svg
                   className="w-4 h-4 "
@@ -51,9 +54,9 @@ const Navbar = () => {
                 >
                   <path
                     stroke="currentColor"
-                    // stroke-linecap="round"
-                    // stroke-linejoin="round"
-                    // stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                   />
                 </svg>
@@ -68,6 +71,28 @@ const Navbar = () => {
                 focus:text-white"
                 placeholder="Search..."
               />
+
+              {/* <form class="max-w-sm mx-auto">
+                <label
+                  for="mood"
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Mood for tunes?
+                </label>
+                <select
+                  id="mood"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                  <option selected> Mood for tunes?</option>
+                  <option value="chill">Chill</option>
+                  <option value="upbeat">Upbeat</option>
+                  <option value="motivated">Motivated</option>
+                  <option value="moodbooster">Mood Booster</option>
+                  <option value="feelingblue">Feeling blue</option>
+                  <option value="anger">Anger</option>
+
+                </select>
+              </form> */}
             </div>
 
             <button
@@ -87,9 +112,9 @@ const Navbar = () => {
               >
                 <path
                   stroke="currentColor"
-                  // stroke-linecap="round"
-                  // stroke-linejoin="round"
-                  // stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M1 1h15M1 7h15M1 13h15"
                 />
               </svg>
@@ -112,9 +137,9 @@ const Navbar = () => {
                 >
                   <path
                     stroke="currentColor"
-                    // stroke-linecap="round"
-                    // stroke-linejoin="round"
-                    // stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                   />
                 </svg>
