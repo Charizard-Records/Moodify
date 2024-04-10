@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
 
 const ProfileInfo = () => {
+  const [userInfo, setUserInfo] = useState({})
+
+  useEffect(() => {
+
+    const getUserInfo = async() => {
+      try {
+        fetch('http://localhost:3000/getUserInfo/3')
+          .then(data => data.json())
+          .then(data => setUserInfo(data))
+      } catch (error) {
+        console.error('Error fetching user info:', error);
+      }
+    }
+
+    getUserInfo()
+    console.log("userInfo", userInfo)
+  }, [])
+
+
   return (
     <main
       className="overflow-hidden shadow-lg rounded-md m-4
@@ -20,7 +39,7 @@ const ProfileInfo = () => {
 
         <div className=" w-[70%] flex flex-col justify-end ml-6">
           <p className="text-base">Profile</p>
-          <p className="text-8xl font-bold mt-2">SABAI SABAI</p>
+          <p className="text-8xl font-bold mt-2">{userInfo.name} {userInfo.name}</p>
           <p className="text-base mt-6">8 followers - 21 following</p>
         </div>
       </section>
