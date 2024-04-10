@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 //When ever i select a mood
 
-
 const Navbar = () => {
   return (
     <>
@@ -169,6 +168,12 @@ const Navbar = () => {
                 >
                   Profile
                 </Link>
+              </li>
+              <li>
+                <button className="block py-2 px-3 rounded  md:hover:bg-transparent md:text-gray-300 md:hover:text-purple-300 md:p-0    ">
+                  Sign In
+                </button>
+    
               </li>
             </ul>
           </div>
