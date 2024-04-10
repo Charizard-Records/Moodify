@@ -4,7 +4,7 @@ import MoodifyNav from "./components/Navbar";
 
 const App = () => {
   return (
-    <div className="bg-black ">
+    <div className="bg-black max-h-screen">
       <MoodifyNav />
 
       <Outlet />

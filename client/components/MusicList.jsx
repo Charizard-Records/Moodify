@@ -5,11 +5,11 @@ import playbutton from "../assets/playbutton.png";
 const MusicList = () => {
   return (
     <div
-      className="shadow-lg rounded-md mt-4 mr-4 
+      className="shadow-lg rounded-md mt-4 ml-8
     scrollbar-thin overflow-y-scroll max-h-screen text-white"
     >
       <div>
-        <div className="w-full max-w-md p-4 
+        <div className="w-full max-w-md p-4
         bg-gradient-to-r from-black  via-gray-900 to-gray-800
          rounded-lg shadow sm:p-8 ">
           <div className="flex items-center justify-between mb-4">
@@ -62,7 +62,6 @@ const MusicList = () => {
                   </button>
                 </div>
               </li>
-              {/* extra */}
               <li className="py-3 sm:py-4">
                 <div className="flex items-center ">
                   <div className="flex-shrink-0">
