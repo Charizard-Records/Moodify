@@ -15,8 +15,20 @@ app.post('/genre', dbController.getGenre, (req, res) =>
   res.status(200).send(res.locals.genre)
 );
 
+app.post('/addHistory', dbController.addHistory, (req, res) =>
+  res.status(200).send(res.locals.date, res.locals.userId, res.locals.moodId, res.locals.message)
+);
+
+app.post('/getUserHistory', dbController.getUserHistory, (req, res) =>
+  res.status(200).send(res.locals.history)
+);
+
+app.get('/getUserInfo/:id', dbController.getUserInfo, (req, res) =>
+  res.status(200).send(res.locals.userInfo)
+);
+
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
-console.log(path.join(__dirname, '../index.html'))
+// console.log(path.join(__dirname, '../index.html'))
 
 // Unknown Page
 app.use('*', (req, res) => res.status(404).send('Page not found'));

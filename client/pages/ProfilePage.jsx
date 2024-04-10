@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ProfileInfo from '../components/ProfileInfo'
 import History from '../components/History'
+import AnalysisBoard from '../components/AnalysisBoard'
+
 
 
 const ProfilePage = () => {
+
   return (
     <div className='bg-black h-full border border-black ' >
 
@@ -11,10 +14,12 @@ const ProfilePage = () => {
 
           <div className='col-span-2'>
           <ProfileInfo />
+
+          <AnalysisBoard />
           </div>
 
           <div className='col-span-1'>
-            <History />
+            <History/>
           </div>
       </div>
     </div>
