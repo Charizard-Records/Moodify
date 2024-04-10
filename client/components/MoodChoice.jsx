@@ -1,13 +1,14 @@
 import React from "react";
 import chill from "../assets/chill.jpg";
-import moodbooster from "../assets/moodbooster.jpg";
+// import moodbooster from "../assets/moodbooster.jpg";
 import motivated from "../assets/motivated.jpg";
 import Happy from "../assets/Happy.jpeg";
 import feelingblue from "../assets/feelingblue.jpg";
 import anger from "../assets/anger.jpg";
 import upbeat from "../assets/Energetic.jpeg";
 
-const MoodChoice = ({ onClickBtn }) => {
+const MoodChoice = ({ onClickBtn, onClickIDBtn }) => {
+  console.log(onClickBtn);
 
   return (
     <div
@@ -28,7 +29,10 @@ const MoodChoice = ({ onClickBtn }) => {
 
         <div className="justify-center p-4 gap-4 grid grid-cols-3">
           <div
-            onClick={() => onClickBtn()}
+            onClick={() => {
+              onClickBtn();
+              onClickIDBtn(12);
+            }}
             className="max-w-sm bg-zinc-900 rounded-lg shadow col-span-1 h-72"
           >
             <div className="relative overflow-hidden rounded-t-lg h-56 hover:scale-105 transition-transform duration-300 ease-in-out">
@@ -47,7 +51,10 @@ const MoodChoice = ({ onClickBtn }) => {
           </div>
 
           <div
-            onClick={() => onClickBtn()}
+            onClick={() => {
+              onClickBtn();
+              onClickIDBtn(7);
+            }}
             className="max-w-sm bg-zinc-900 rounded-lg shadow col-span-1 h-72"
           >
             <div className="relative overflow-hidden rounded-t-lg h-56 hover:scale-105 transition-transform duration-300 ease-in-out">
@@ -66,7 +73,10 @@ const MoodChoice = ({ onClickBtn }) => {
           </div>
 
           <div
-            onClick={() => onClickBtn()}
+            onClick={() => {
+              onClickBtn();
+              onClickIDBtn(8);
+            }}
             className="max-w-sm bg-zinc-900 rounded-lg shadow col-span-1 h-72"
           >
             <div className="relative overflow-hidden rounded-t-lg h-56 hover:scale-105 transition-transform duration-300 ease-in-out">
@@ -85,7 +95,10 @@ const MoodChoice = ({ onClickBtn }) => {
           </div>
 
           <div
-            onClick={() => onClickBtn()}
+            onClick={() => {
+              onClickBtn();
+              onClickIDBtn(9);
+            }}
             className="max-w-sm bg-zinc-900  rounded-lg shadow col-span-1 h-72"
           >
             <div className="relative overflow-hidden rounded-t-lg h-56 hover:scale-105 transition-transform duration-300 ease-in-out">
@@ -104,7 +117,10 @@ const MoodChoice = ({ onClickBtn }) => {
           </div>
 
           <div
-            onClick={() => onClickBtn()}
+            onClick={() => {
+              onClickBtn();
+              onClickIDBtn(10);
+            }}
             className="max-w-sm bg-zinc-900  rounded-lg shadow col-span-1 h-72"
           >
             <div className="relative overflow-hidden rounded-t-lg h-56 hover:scale-105 transition-transform duration-300 ease-in-out">
@@ -123,7 +139,10 @@ const MoodChoice = ({ onClickBtn }) => {
           </div>
 
           <div
-            onClick={() => onClickBtn()}
+            onClick={() => {
+              onClickBtn();
+              onClickIDBtn(11);
+            }}
             className="max-w-sm bg-zinc-900  rounded-lg shadow col-span-1 h-72"
           >
             <div className="relative overflow-hidden rounded-t-lg h-56 hover:scale-105 transition-transform duration-300 ease-in-out">

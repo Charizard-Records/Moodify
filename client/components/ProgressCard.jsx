@@ -86,18 +86,77 @@ const ProgressCard = ({ analyzedDataProps }) => {
             enabled: true,
             x: {
               show: false,
+            }
+          },
+        yaxis: {
+          show: false,
+          labels: {
+            formatter: function (value) {
+              return value + "%";
             },
           },
-          yaxis: {
-            show: false,
-            labels: {
-              formatter: function (value) {
-                return value + "%";
-              },
-            },
-          },
-        };
+        },
       };
+    };
+      //   plotOptions: {
+      //     radialBar: {
+      //       track: {
+      //         background: "#fff",
+      //       },
+      //       dataLabels: {
+      //         show: false,
+      //       },
+      //     },
+      //     yaxis: {
+      //       show: false,
+      //       labels: {
+      //         formatter: function (value) {
+      //           return value + "%";
+      //         },
+      //       hollow: {
+      //         margin: 0,
+      //         size: "10%",
+      //       },
+      //     },
+      //   },
+      //   grid: {
+      //     show: false,
+      //     strokeDashArray: 4,
+      //     padding: {
+      //       left: 2,
+      //       right: 2,
+      //       top: -23,
+      //       bottom: -20,
+      //     },
+      //   },
+      //   labels: [
+      //     "Mood Booster",
+      //     "Motivated",
+      //     "Feeling blue",
+      //     "Chill",
+      //     "Upbeat",
+      //     "Anger",
+      //   ],
+      //   legend: {
+      //     show: true,
+      //     position: "right",
+      //     fontFamily: "Inter, sans-serif",
+      //   },
+      //   tooltip: {
+      //     enabled: true,
+      //     x: {
+      //       show: false,
+      //     },
+      //   },
+      //   yaxis: {
+      //     show: false,
+      //     labels: {
+      //       formatter: function (value) {
+      //         return value + "%";
+      //       },
+      //     },
+      //   },
+      // };
 
       if (
         document.getElementById("radial-chart") &&
