@@ -28,7 +28,7 @@ module.exports = {
     },
     proxy: [
       {
-        context: ["/genre","/login"],
+        context: ["/genre","/getUserHistory","/login"],
         target: "http://localhost:3000",
       },
     ],

@@ -1,12 +1,13 @@
 const axios = require('axios');
 const querystring = require ('querystring');
+const { Cookie } = require('express-session');
 
 
 
 const accessToken = '';
 const clientId = '16a9c134560d4ae5ae1085469dcdf56b';
 const clientSecret = '05745b1fb16342b08f7ef71045e2c348';
-const redirectUri = 'http://localhost:8080';
+const redirectUri = 'http://localhost:8080/test';
 
 function generateRandomString(length) {
     // Define characters allowed in the random string
@@ -21,6 +22,8 @@ function generateRandomString(length) {
     }
     return result;
   }
+
+
 
 const apiController = {
   
@@ -71,9 +74,14 @@ login(req, res, next){
 //     next()
 //   },
 
+
+
 async getToken(req, res, next){
-    const code = res.query.code;
-    var state = req.query.state; 
+    const code = req.query.code;
+    const state = req.query.state; 
+    res.cookie('code', code);
+    res.cookie('state', state);
+    try{
      res.locals.token = await fetch('https://accounts.spotify.com/api/token',{
         method: "POST",
         form: {
@@ -87,6 +95,14 @@ async getToken(req, res, next){
           },
           json: true
     })
+    const myCookie = new Cookie();
+    myCookie.httpOnly = true;
+    res.cookie('token', res.locals.token, myCookie);
+    return (next())
+    } catch{
+        return next((err) => err);
+    }
+
 },
 
 

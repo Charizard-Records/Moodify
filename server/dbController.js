@@ -41,6 +41,19 @@ dbController.getUserId = (req, res, next) => {
     );
 };
 
+dbController.getUserInfo = (req, res, next) => {
+  const params = [req.params.id];
+  const text = `SELECT * FROM users WHERE users._id = $1`;
+  db.query(text, params)
+    .then((data) => {
+      res.locals.userInfo = data.rows[0];
+      return next();
+    })
+    .catch((err) =>
+      next({ log: 'Error in dbController.getUserInfo', message: err })
+    );
+};
+
 dbController.getMoodId = (req, res, next) => {
   const params = [req.body.mood];
   const text = `SELECT mood._id FROM mood WHERE mood.name = $1`;
@@ -61,12 +74,26 @@ dbController.addHistory = (req, res, next) => {
   const month = String(currentDate.getMonth() + 1).padStart(2, '0');
   const day = String(currentDate.getDate()).padStart(2, '0');
 
+
+  // const params = [
+  //   `${year}-${month}-${day}`,
+  //   res.locals.userId,
+  //   res.locals.moodId,
+  //   req.body.message
+  // ];
+
   const params = [
     `${year}-${month}-${day}`,
-    res.locals.userId,
-    res.locals.moodId,
+    req.body.userId,
+    req.body.moodId,
     req.body.message
   ];
+
+  res.locals.date = `${year}-${month}-${day}`;
+  res.locals.userId = req.body.userId;
+  res.locals.moodId = req.body.moodId
+  res.locals.message = req.body.message
+
   const text = `INSERT INTO history(date, user_id, mood_id, message) VALUES($1, $2, $3, $4)`;
   db.query(text, params)
     .then(() => next())
@@ -76,11 +103,12 @@ dbController.addHistory = (req, res, next) => {
 };
 
 dbController.getUserHistory = (req, res, next) => {
-  const params = [req.body.name];
+  // const params = [req.body.name];
+  const params = [req.body.id];
   const text = `SELECT h.date, m.name as mood, h.message FROM users u 
   INNER JOIN history h ON u._id = h.user_id 
   INNER JOIN mood m ON m._id = h.mood_id
-  WHERE u.name = $1`;
+  WHERE u._id = $1`;
   db.query(text, params)
     .then((data) => {
       res.locals.history = data.rows;
